@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9fTxhFmhP8LTGi0NRAfr6GcUg141bggzOqjIZWgpIXvuqo3w0mZB307xmDXF1rh0XGvg7a24flU1p4mZ02Rwmg==",
+  "dgSpecHash": "g+/inew7MFWEecPUCl52nQICC+E1EuVbnblvjAL4w0o2xfgQUbqUWFwdGEey6deoUSkkk93NFAUQZwhWJkuuzg==",
   "success": true,
-  "projectFilePath": "/home/takobzlah/Desktop/dev/code/simple-oauth/auth-server/auth-server.csproj",
+  "projectFilePath": "/home/takobzlah/Desktop/dev/code/simple-oauth/src/auth-server/auth-server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
