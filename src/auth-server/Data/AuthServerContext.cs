@@ -16,5 +16,3 @@ namespace SimpleAuthServer.Data
         }
     }
 }
-
-//TODO: Fix Tools

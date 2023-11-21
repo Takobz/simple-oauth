@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 namespace SimpleAuthServer.Data.Entities
 {
     public class Entity
