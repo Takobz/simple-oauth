@@ -4,7 +4,12 @@ using SimpleAuthServer.Data.Entities;
 #pragma warning disable CS8618
 namespace SimpleAuthServer.Data
 {
-    public class AuthServerContext : DbContext 
+    public interface IAuthServerContext
+    {
+        public DbSet<Client> Clients { get; set; }
+    }
+
+    public class AuthServerContext : DbContext, IAuthServerContext
     {
         public DbSet<Client> Clients { get; set; }
 

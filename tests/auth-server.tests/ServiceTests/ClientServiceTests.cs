@@ -2,7 +2,7 @@ using FluentAssertions;
 using SimpleAuthServer.Models.ClientService;
 using SimpleAuthServer.Services;
 
-namespace SimpleAuth.AuthServer.Tests.Services 
+namespace SimpleAuth.AuthServer.Tests.ServiceTests
 {
     public class ClientServiceTests 
     {
