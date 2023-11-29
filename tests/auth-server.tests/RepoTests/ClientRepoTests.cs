@@ -51,13 +51,17 @@ namespace SimpleAuth.AuthServer.Tests.RepoTests
             private static DbSet<Client> SetUpClientDbSet(List<Client> clients)
             {
                 var mockSet = new Mock<DbSet<Client>>();
-
                 var clientsAsQueryable = clients.AsQueryable();
+
+                //create custom Enumarator
+                mockSet.As<IAsyncEnumerable<Client>>()
+                    .Setup(m => m.GetAsyncEnumerator(It.IsAny<CancellationToken>()))
+                    .Returns(new TestAsyncEnumerator<Client>(clientsAsQueryable.GetEnumerator()));
+
                 //look at: https://github.com/MichalJankowskii/Moq.EntityFrameworkCore/blob/master/src/Moq.EntityFrameworkCore/MoqExtensions.cs
-                mockSet.As<IQueryable<Client>>().Setup(m => m.Provider).Returns(clients.AsQueryable().Provider);
-                mockSet.As<IQueryable<Client>>().Setup(m => m.Expression).Returns(clients.AsQueryable().Expression);
-                mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType).Returns(clients.AsQueryable().ElementType);
-                mockSet.As<IQueryable<Client>>().Setup(m => m.GetEnumerator()).Returns(clients.AsQueryable().GetEnumerator());
+                mockSet.As<IQueryable<Client>>().Setup(m => m.Provider).Returns(clientsAsQueryable.Provider);
+                mockSet.As<IQueryable<Client>>().Setup(m => m.Expression).Returns(clientsAsQueryable.Expression);
+                mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType).Returns(clientsAsQueryable.ElementType);                
 
                 return mockSet.Object;
             }
