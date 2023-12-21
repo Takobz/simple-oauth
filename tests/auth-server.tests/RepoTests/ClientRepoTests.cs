@@ -19,6 +19,7 @@ namespace SimpleAuth.AuthServer.Tests.RepoTests
 
             private readonly Guid _clientId;
             private readonly string _redirectUri;
+            private readonly string _clientName;
 
             public ClientRepoTests()
             {
@@ -28,6 +29,7 @@ namespace SimpleAuth.AuthServer.Tests.RepoTests
 
                 _clientId = Guid.NewGuid();
                 _redirectUri = "https://client-uri.com/callback";
+                _clientName = "test-client-name";
             }
 
             [Fact]
@@ -35,7 +37,7 @@ namespace SimpleAuth.AuthServer.Tests.RepoTests
             {
                 var clients = new List<Client>
                 {
-                    Client.Create(_clientId, _redirectUri)
+                    Client.Create(_clientId, _redirectUri, _clientName)
                 };
 
                 var clientsDbSet = SetUpClientDbSet(clients);

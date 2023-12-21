@@ -1,15 +1,8 @@
 namespace SimpleAuthServer.Models.ClientService
 {
-    public class GetAndValidateClientResponse
+    public class GetAndValidateClientResponse(Client client)
     {
-        public GetAndValidateClientResponse(Client client)
-        {
-            Client = client;
-        }
-
-        public GetAndValidateClientResponse() { }
-
-        public Client Client { get; private set; }
+        public Client Client { get; private set; } = client;
         public bool IsClientValid 
         {
             get 

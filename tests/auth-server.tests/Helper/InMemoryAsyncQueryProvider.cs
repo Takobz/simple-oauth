@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Query;
 
 namespace SimpleAuth.AuthServer.Tests.Helper
 {
+    #pragma warning disable CS8603
     public class InMemoryAsyncQueryProvider<TEntity> : IAsyncQueryProvider
     {
         private readonly IQueryProvider innerQueryProvider;
@@ -39,7 +40,7 @@ namespace SimpleAuth.AuthServer.Tests.Helper
             var expectedResultType = typeof(TResult).GetGenericArguments()?.FirstOrDefault();
             if (expectedResultType == null)
             {
-                return default(TResult);
+                return default;
             }
 
             return (TResult)typeof(Task).GetMethod(nameof(Task.FromResult))

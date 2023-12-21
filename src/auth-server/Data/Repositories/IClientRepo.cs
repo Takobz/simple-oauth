@@ -8,14 +8,9 @@ namespace SimpleAuthServer.Data.Repositories
         Task<RepoResult<Client>> GetClientAsync(Guid clientId);
     }
 
-    public class ClientRepo : IClientRepo
+    public class ClientRepo(IAuthServerContext context) : IClientRepo
     {
-        private readonly IAuthServerContext _context;
-
-        public ClientRepo(IAuthServerContext context)
-        {
-            _context = context;
-        }
+        private readonly IAuthServerContext _context = context;
 
         public async Task<RepoResult<Client>> GetClientAsync(Guid clientId)
         {

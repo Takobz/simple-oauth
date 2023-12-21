@@ -4,4 +4,9 @@ namespace SimpleAuthServer.Models
     {
         public const string Code = "code";
     }
+
+    public static class OAuth2FlowType 
+    {
+        public const string AuthorizationFlow = "authorization_code";
+    }
 }

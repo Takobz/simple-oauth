@@ -1,4 +1,6 @@
 using FluentAssertions;
+using Moq;
+using SimpleAuthServer.Data.Repositories;
 using SimpleAuthServer.Models.ClientService;
 using SimpleAuthServer.Services;
 
@@ -7,12 +9,15 @@ namespace SimpleAuth.AuthServer.Tests.ServiceTests
     public class ClientServiceTests 
     {
         private readonly ClientService _sut;
+        private readonly IMock<IClientRepo> _mockRepo;
         private readonly string _clientId;
         private readonly string _redirectUri;
 
         public ClientServiceTests() 
         {
-            _sut = new ClientService();
+            _mockRepo = new Mock<IClientRepo>();
+
+            _sut = new ClientService(_mockRepo.Object);
             _clientId = $"{Guid.NewGuid()}";
             _redirectUri = $"https://localhost:5001/signin-oidc";
         }
