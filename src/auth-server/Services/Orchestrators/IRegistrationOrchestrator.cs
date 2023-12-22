@@ -1,1 +1,12 @@
-//to logic + services related to client registrations
+namespace SimpleAuthServer.Services.Orchestrator
+{
+    public interface IRegistrationOrchestrator
+    {
+        
+    }
+
+    public class RegistrationOrchestrator : IRegistrationOrchestrator
+    {
+        
+    }
+}

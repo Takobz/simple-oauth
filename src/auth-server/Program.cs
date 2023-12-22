@@ -1,13 +1,13 @@
-using System.ComponentModel.DataAnnotations;
+using SimpleAuthServer.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using SimpleAuthServer.ServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSimpleAuthServices();
+builder.Services.AddRepo();
 var app = builder.Build();
 
-app.MapPost("/register", (
-    [FromQuery(Name = "flow_type")] [Required]string flowType,
-    [FromQuery(Name = "redirect_uri")] [Required] string redirectUri,
-    [FromQuery(Name = "client_name")] [Required] string clientName) => 
+app.MapPost("/register", ([FromBody] ClientRegistrationRequest request) => 
     {
         
     });
