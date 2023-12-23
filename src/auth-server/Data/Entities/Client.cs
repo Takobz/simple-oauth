@@ -8,6 +8,11 @@ namespace SimpleAuthServer.Data.Entities
     ///</summary>
     public class Client : Entity
     {
+        ///<summary>
+        /// Constructor for Entity Framework
+        ///</summary>
+        public Client(){}
+
         [Obsolete("This constructor is Obselete was created before full client")]
         public Client(
              Guid clientId,
