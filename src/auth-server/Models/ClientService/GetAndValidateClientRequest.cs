@@ -1,8 +1,8 @@
 namespace SimpleAuthServer.Models.ClientService
 {
-    public class GetAndValidateClientRequest(string clientId, string redirectUri)
+    public class GetAndValidateClientRequest(Guid clientId, string redirectUri)
     {
-        public string ClientId { get; private set; } = clientId;
+        public Guid ClientId { get; private set; } = clientId;
         public string RedirectUri { get; private set; } = redirectUri;
     }
 }

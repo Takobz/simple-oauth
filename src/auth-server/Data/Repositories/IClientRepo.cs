@@ -6,6 +6,7 @@ namespace SimpleAuthServer.Data.Repositories
     public interface IClientRepo
     {
         Task<RepoResult<Client>> GetClientAsync(Guid clientId);
+        Task<RepoResult<Client>> CreateClientAsync(Client clientToBeCreates);
     }
 
     public class ClientRepo(IAuthServerContext context) : IClientRepo
@@ -21,6 +22,13 @@ namespace SimpleAuthServer.Data.Repositories
             }
 
             return new RepoResult<Client>(client, isSuccess: true, isEmptyResult: false);
+        }
+        
+        public async Task<RepoResult<Client>> CreateClientAsync(Client clientToBeCreates)
+        {
+            var client = await _context.Clients.AddAsync(clientToBeCreates);
+            await _context.SaveChangesAsync();
+            return new RepoResult<Client>(client.Entity, isSuccess: true, isEmptyResult: false);
         }
     }
 }

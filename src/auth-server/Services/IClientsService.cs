@@ -5,16 +5,22 @@ namespace SimpleAuthServer.Services
 {
     public interface IClientsService
     {
-        Task<GetAndValidateClientResponse> GetAndValidateClientAsync(GetAndValidateClientRequest request);
+        Task<ClientGetResponse> GetAndValidateClientAsync(GetAndValidateClientRequest request);
     }
 
     public class ClientService(IClientRepo clientRepo) : IClientsService
     {
         private readonly IClientRepo _clientRepo = clientRepo;
 
-        public async Task<GetAndValidateClientResponse> GetAndValidateClientAsync(GetAndValidateClientRequest request)
+        public async Task<ClientGetResponse> GetAndValidateClientAsync(GetAndValidateClientRequest request)
         {
-            return await Task.FromResult(new GetAndValidateClientResponse(new Client(request.ClientId, request.RedirectUri)));
+            var clientRepoResult = await _clientRepo.GetClientAsync(request.ClientId);
+            if (clientRepoResult.IsEmptyResult)
+            {
+                return await Task.FromResult(ClientGetResponse.EmptyResponse());
+            }
+            
+            return await Task.FromResult(ClientGetResponse.FromClient(clientRepoResult.Result));
         }
     }
 }
