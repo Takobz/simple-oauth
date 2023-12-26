@@ -4,6 +4,7 @@ namespace SimpleAuthServer.Models.ClientService
 {
     public class RegisterClientRequest
     {
+        //Make sure we have required fields for Client.Create()
         public string ClientId { get; private set; } = string.Empty;
         public string ClientName { get; private set; } = string.Empty;
         public IEnumerable<string> RedirectUris { get; private set; } = Enumerable.Empty<string>();
